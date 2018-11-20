@@ -7,5 +7,5 @@ Solutions to cryptopals challenges. All code here is written in python 3.6.
 1. [Convert hex to base64](./Set1/1.py)  
 A simple problem. I used python base64 library to solve this.
 
-2. [Fixed XOR](./Set2/2.py)  
+2. [Fixed XOR](./Set1/2.py)  
 Another simple one. I used a for loop to xor the two hex strings digitwise.
