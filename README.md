@@ -13,3 +13,6 @@ This makes life easier because otherwise I would have to write lot of messy for 
 
 3. [Single-byte XOR cipher](./Set1/c3.py)  
 Nice one. I brute forced all possible characters to xor with. For "scoring" based on frequncy, I used chi-squared statistic technique. 
+
+4. [Detect single-character XOR](./Set1/c4.py)  
+This was a very interesting one. I first brute forced through all possible solutions. Then I tried to score each decoding a looking at strings with low scores(similar to c3). But there were a lot of strings to consider. So, I considered only strings with high frequency of alphabets(more than 60%) which reduced the count to 5 strings.

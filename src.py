@@ -57,12 +57,22 @@ def chi(count, expected):
 
     return sum([((c-total_count*p)*(c-total_count*p))/(total_count*p) for c,p in zip(count, expected)])
 
+def percentage_alpha(s):
+    # returns the percentage of characters in s
+    # returns a number between 0 to 100
+
+    count = 0
+    for b in s:
+        if chr(b).isalpha():
+            count += 1
+    return count/len(s)*100
+
 
 ### MAIN PROGRAM ###
 
 def main():
-    s = b'\x00'
-    print(score_plaintext(s))
+    s = b'abcd xjkjk  jklkjafu9245 kwfj 98'
+    print(percentage_alpha(s))
 
 
 if __name__ == '__main__':
