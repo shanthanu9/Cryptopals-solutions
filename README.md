@@ -16,3 +16,6 @@ Nice one. I brute forced all possible characters to xor with. For "scoring" base
 
 4. [Detect single-character XOR](./Set1/c4.py)  
 This was a very interesting one. I first brute forced through all possible solutions. Then I tried to score each decoding a looking at strings with low scores (similar to c3). But there were a lot of strings to consider. So, I considered only strings with high frequency of alphabets (more than 60%) which reduced the count to 5 strings.
+
+5. [Implement repeating-key XOR](./Set1/c5.py)  
+Implementaion question. I wrote a function to perform repeated xor on a string.
