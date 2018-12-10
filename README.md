@@ -19,3 +19,16 @@ This was a very interesting one. I first brute forced through all possible solut
 
 5. [Implement repeating-key XOR](./Set1/c5.py)  
 Implementaion question. I wrote a function to perform repeated xor on a string.
+
+6. [Break repeating-key XOR](./Set1/c6.py)  
+Oof this one was tough. 
+
+Fisrt, I had to convert the base64 string to hex form.
+
+The initial task to implement the hamming distance function. The catch here is to compare the 'bits', not just the characters. I have defined my hamming distance in [src.py](./src.py). 
+
+Next I had to guess the key size. This was to be done by finding the normalised hamming distance for different keysizes. The idea is the one with the least value is the probable key size. Initially, I made the mistake of using just two strings (i.e, the initial first two), which gave me erraneous results. Rectifying this error,  I averaged over the entire encoded string which gave me a accurate value for keysize. In the challenge it is suggested to consider the top 2-3 values. Turns out the lowest value itself is the corret key size.
+
+Next I had to figure out the key. For this, first I broke the encoded string into blocks of keysize. Then I transposed these blocks to get a block which is first byte of every block, second byte, third byte and so on. Then I cracked each block as if it was encoded by single key xor. (Here we could reuse code from challenge 3 Set 1)
+
+Then I concatenated the results obtained for each block and obtained the key. Since I used chi mean squared statistic, the resulting key I obtained was correct in all positions except for one. I figured out the correct key by some (easy) trial and error.
