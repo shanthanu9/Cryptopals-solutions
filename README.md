@@ -2,6 +2,10 @@
 
 Solutions to cryptopals challenges. All code here is written in python 3.6. [src.py](./src.py) contains functions commonly used across all challenges.
 
+TO run a particular challenge 'x' in set 'y', run 
+
+> $ ./Setx/cy.py
+
 ## Set 1 : Basics
 
 1. [Convert hex to base64](./Set1/c1.py)  
@@ -37,3 +41,10 @@ This makes life easier because otherwise I would have to write lot of messy for 
     I used cryptodome library to solve this one. Very simple one. 
 
     First converted to bytes from base64. Then used the key to decrypt the cipher text using Crypto.Cipher library.
+
+8. [Detect AES in ECB mode](./Set1/c8.py)  
+    The problem was to detect the line in the given file encoded AES in ECB mode. I tried to find the line by checking each line if any block of 16 bytes repeated. And it did for one of them. 
+
+    Initially all lines in the file were hex encoded which I had to decode.
+
+
