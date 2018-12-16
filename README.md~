@@ -32,8 +32,3 @@ Next I had to guess the key size. This was to be done by finding the normalised 
 Next I had to figure out the key. For this, first I broke the encoded string into blocks of keysize. Then I transposed these blocks to get a block which is first byte of every block, second byte, third byte and so on. Then I cracked each block as if it was encoded by single key xor. (Here we could reuse code from challenge 3 Set 1)
 
 Then I concatenated the results obtained for each block and obtained the key. Since I used chi mean squared statistic, the resulting key I obtained was correct in all positions except for one. I figured out the correct key by some (easy) trial and error.
-
-7. [AES in ECB mode](./Set1/c7.py)
-I used cryptodome library to solve this one. Very simple one. 
-
-Firt converted to bytes from base64. Then used the key to decrypt the cipher text using Crypto.Cipher library.
