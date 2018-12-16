@@ -2,9 +2,9 @@
 
 Solutions to cryptopals challenges. All code here is written in python 3.6. [src.py](./src.py) contains functions commonly used across all challenges.
 
-TO run a particular challenge 'x' in set 'y', run 
+TO run a particular challenge 'x' in set 'y', run the following command on the terminal
 
-> $ ./Setx/cy.py
+> $ python3 Setx/cy.py
 
 ## Set 1 : Basics
 
