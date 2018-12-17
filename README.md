@@ -47,4 +47,10 @@ This makes life easier because otherwise I would have to write lot of messy for 
 
     Initially all lines in the file were hex encoded which I had to decode.
 
+## Set 2 : Block Crypto
 
+9. [Implement PKCS#7 padding](./Set2/c9.py)  
+    The problem was to pad plaintext to be a multiple of certain block size. I found this online for PKCS#7,  
+    > For such algorithms, the method shall be to pad the input at the trailing end with k - (l mod k) octets all having value k - (l mod k), where l is the length of the input.
+    
+    Using the above definition, I defined a function to pad to a specific size.
