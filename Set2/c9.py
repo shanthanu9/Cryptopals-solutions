@@ -16,7 +16,7 @@ def PKCS_pad(s, block_size):
 
 def main():
     block_size = 20
-    plaintext = b'YELLOW SUBMARINE'
+    plaintext = b'YELLOW SUBMARINE4444'
     print(PKCS_pad(plaintext, block_size))
 
 if __name__ == '__main__':

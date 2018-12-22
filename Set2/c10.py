@@ -24,14 +24,16 @@ def encrypt_CBC(plain_text, IV, key):
     # to decrypt CBC
     # IV is the initialization vector
 
-    block_length = len(key)
-    s = PKCS_pad(plain_text, block_length)
+    block_size = len(key)
+    print(len(plain_text))
+    s = PKCS_pad(plain_text, block_size)
+    print(len(s))
 
     cipher = AES.new(key, AES.MODE_ECB)
 
     prev = IV
 
-    encrpyt = []
+    encrypt = []
 
     for i in range(0, len(s), block_size):
         block = xor_two_strings(s[i:i+block_size], prev)
@@ -39,6 +41,7 @@ def encrypt_CBC(plain_text, IV, key):
         encrypt.append(e)
         prev = e
 
+    return b''.join(encrypt)
 
 ### MAIN PROGRAM ###
 
@@ -53,12 +56,14 @@ def main():
     """
 
     plain_text = b'12345678901234567890'
-    key = b'23456'
-    IV = b'\x00\x00\x00\x00\x00'
+    plain_text = PKCS_pad(plain_text, 16)
+    key = b'1234567890123456'
+    IV = b'\00'*16
 
-    cipher = AES.new(key, AES.MODE_CBC)
+    cipher = AES.new(key, AES.MODE_CBC, IV)
 
     print(cipher.encrypt(plain_text))
+    print(encrypt_CBC(plain_text, IV, key))
 
 
 if __name__ == '__main__':
