@@ -2,6 +2,7 @@
 
 from Crypto.Cipher import AES
 from c9 import PKCS_pad
+import base64
 
 ### FUNCTIONS ###
 
@@ -20,50 +21,48 @@ def xor_two_strings(a, b):
     return bytes(xor)
 
 
-def encrypt_CBC(plain_text, IV, key):
+def decrypt_CBC(cipher_text, IV, key):
     # to decrypt CBC
     # IV is the initialization vector
+    # NOTE: the plaintext must be padded
+    # to len(key)
 
     block_size = len(key)
-    print(len(plain_text))
-    s = PKCS_pad(plain_text, block_size)
-    print(len(s))
 
     cipher = AES.new(key, AES.MODE_ECB)
 
     prev = IV
+    plain_text = []
 
-    encrypt = []
+    for i in range(0, len(cipher_text), block_size):
+        block = cipher_text[i:i+block_size]
+        inter = cipher.decrypt(block) # inter for intermediate stage
+        plain_text.append(xor_two_strings(inter, prev))
+        prev = block
 
-    for i in range(0, len(s), block_size):
-        block = xor_two_strings(s[i:i+block_size], prev)
-        e = cipher.encrypt(block)
-        encrypt.append(e)
-        prev = e
-
-    return b''.join(encrypt)
+    return b''.join(plain_text)
 
 ### MAIN PROGRAM ###
 
 def main():
 
-    """encoded = []
-    print('Load contents in file...')
+    encoded = []
+    print('Loading contents in file...')
     with open('c10_file.txt') as f:
         for line in f:
             encoded.append(line[:-1])
-    encoded = bytes(''.join(encoded), 'utf_8')
-    """
+    encoded = base64.b64decode(bytes(''.join(encoded), 'utf_8'))
 
-    plain_text = b'12345678901234567890'
-    plain_text = PKCS_pad(plain_text, 16)
-    key = b'1234567890123456'
-    IV = b'\00'*16
+    print('Done')
 
-    cipher = AES.new(key, AES.MODE_CBC, IV)
+    key = b'YELLOW SUBMARINE'
+    cipher_text = PKCS_pad(encoded, len(key))
+    IV = b'\x00'*len(key)
 
-    print(cipher.encrypt(plain_text))
-    print(encrypt_CBC(plain_text, IV, key))
+    print('The plain text is : ')
+    plain_text = decrypt_CBC(cipher_text, IV, key)
+
+    print(plain_text.decode())
 
 
 if __name__ == '__main__':

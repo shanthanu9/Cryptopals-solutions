@@ -42,6 +42,9 @@ This makes life easier because otherwise I would have to write lot of messy for 
 
     First converted to bytes from base64. Then used the key to decrypt the cipher text using Crypto.Cipher library.
 
+    Following is the image for ECB encryption :
+    ![Image of ECB mode encryption](./images/ECB_encrypt.png)
+
 8. [Detect AES in ECB mode](./Set1/c8.py)  
     The problem was to detect the line in the given file encoded AES in ECB mode. I tried to find the line by checking each line if any block of 16 bytes repeated. And it did for one of them. 
 
@@ -54,3 +57,15 @@ This makes life easier because otherwise I would have to write lot of messy for 
     > For such algorithms, the method shall be to pad the input at the trailing end with k - (l mod k) octets all having value k - (l mod k), where l is the length of the input.
     
     Using the above definition, I defined a function to pad to a specific size.
+
+10. [Implement CBC mode](./Set2/c10.py)
+    As the problem name suggests, I had to decrypt a cipher_text encrypted in CBC mode given the key. CBC mode is very similar to ECB mode. Just like ECB, here the plain text is divided into blocks of equal size. Each block is "combined" with previous cipher text and then encrypted.
+
+    Following is the image for CBC encryption :
+    ![Image of CBC mode encryption](./images/CBC_encrypt.png)
+
+    Following is the image for CBC decryption :
+    ![Image of CBC mode decryption](./images/CBC_decrypt.png)
+
+    In the problem, the "combine" step is implemented as xor. Also, the initial cipher_text was base64 encoded (whoch was not mentioned). I suppose from now on I should assume given text will be base 64 encoded (just view the file for this).
+    
