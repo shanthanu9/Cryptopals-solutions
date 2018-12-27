@@ -1,6 +1,7 @@
 #Detect AES in ECB mode
 
 import base64
+from Crytpo.Cipher import AES
 
 ### MAIN PROGRAM ###
 

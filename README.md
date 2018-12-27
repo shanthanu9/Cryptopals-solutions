@@ -68,4 +68,10 @@ This makes life easier because otherwise I would have to write lot of messy for 
     ![Image of CBC mode decryption](./images/CBC_decrypt.png)
 
     In the problem, the "combine" step is implemented as xor. Also, the initial cipher_text was base64 encoded (whoch was not mentioned). I suppose from now on I should assume given text will be base 64 encoded (just view the file for this).
-    
+
+11. [An ECB/CBC detection oracle](./Set2/c11.py)
+    Initially I was stuck on this as I thought I had no control over the input string. The problem is to choose the input string wisely. 
+
+    I chose 'AAA...AAA' (48 A's). Then the 2nd and 3rd block will be same for ECB encrypted string (regardless of how many junk bytes are added before and after ciphertext). 
+
+    A fairly straightforward problem.
