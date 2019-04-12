@@ -2,7 +2,7 @@
 
 Solutions to cryptopals challenges. All code here is written in python 3.6. [src.py](./src.py) contains functions commonly used across all challenges.
 
-TO run a particular challenge 'x' in set 'y', run the following command on the terminal
+TO run a particular challenge 'y' in set 'x', run the following command on the terminal
 
 > $ python3 Setx/cy.py
 
@@ -31,7 +31,7 @@ This makes life easier because otherwise I would have to write lot of messy for 
 
     The initial task to implement the hamming distance function. The catch here is to compare the 'bits', not just the characters. I have defined my hamming distance in [src.py](./src.py). 
 
-     Next I had to guess the key size. This was to be done by finding the normalised hamming distance for different keysizes. The idea is the one with the least value is the probable key size. Initially, I made the mistake of using just two strings (i.e, the initial first two), which gave me erraneous results. Rectifying this error,  I averaged over the entire encoded string which gave me a accurate value for keysize. In the challenge it is suggested to consider the top 2-3 values. Turns out the lowest value itself is the corret key size.
+     Next I had to guess the key size. This was to be done by finding the normalised hamming distance for different keysizes. The idea is the one with the least value is the probable key size. Initially, I made the mistake of using just two strings (i.e, the initial first two), which gave me erraneous results. Rectifying this error,  I averaged over the entire encoded string which gave me a accurate value for keysize. In the challenge it is suggested to consider the top 2-3 values. Turns out the lowest value itself is the correct key size.
 
     Next I had to figure out the key. For this, first I broke the encoded string into blocks of keysize. Then I transposed these blocks to get a block which is first byte of every block, second byte, third byte and so on. Then I cracked each block as if it was encoded by single key xor. (Here we could reuse code from challenge 3 Set 1)
    
